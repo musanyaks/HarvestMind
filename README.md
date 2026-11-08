@@ -18,7 +18,8 @@ An advanced, explainable crop yield intelligence platform built for Kenyan small
 - [API reference](#api-reference)
 - [Agronomic model](#agronomic-model)
 - [Kenya-specific design](#kenya-specific-design)
-- [Dashboard & analytics](#dashboard--analytics)
+- [![HarvestMind Dashboard](public/dashboard-preview.png)](https://harvestmind-five.vercel.app/dashboard)
+**Live demo:** https://harvestmind-five.vercel.app
 - [Development](#development)
 - [Deployment](#deployment)
 - [License](#license)
