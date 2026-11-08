@@ -4,7 +4,7 @@ An advanced, explainable crop yield intelligence platform built for Kenyan small
 
 **Live demo:** [harvestmind-five.vercel.app](https://harvestmind-five.vercel.app)
 
-[![HarvestMind Dashboard](public/dashboard-preview.png)](https://harvestmind-five.vercel.app/dashboard)
+[![HarvestMind Dashboard](public/data/dashboard-preview.png.jpg)](https://harvestmind-five.vercel.app/dashboard)
 
 ---
 
