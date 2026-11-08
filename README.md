@@ -2,7 +2,9 @@
 
 An advanced, explainable crop yield intelligence platform built for Kenyan smallholder farmers. HarvestMind combines agronomic modeling, real-time weather data, persistent analytics, and an interactive Kenya map to turn soil tests and climate observations into actionable yield forecasts.
 
-![Dashboard](public/dashboard-preview.png)
+**Live demo:** [harvestmind-five.vercel.app](https://harvestmind-five.vercel.app)
+
+[![HarvestMind Dashboard](public/dashboard-preview.png)](https://harvestmind-five.vercel.app/dashboard)
 
 ---
 
@@ -18,8 +20,7 @@ An advanced, explainable crop yield intelligence platform built for Kenyan small
 - [API reference](#api-reference)
 - [Agronomic model](#agronomic-model)
 - [Kenya-specific design](#kenya-specific-design)
-- [![HarvestMind Dashboard](public/dashboard-preview.png)](https://harvestmind-five.vercel.app/dashboard)
-**Live demo:** https://harvestmind-five.vercel.app
+- [Dashboard & analytics](#dashboard--analytics)
 - [Development](#development)
 - [Deployment](#deployment)
 - [License](#license)
@@ -86,34 +87,37 @@ Every prediction is explainable. The model returns a feature-importance breakdow
 ## Architecture
 
 ```text
-src/
-├── app/                    # Next.js App Router pages and API routes
-│   ├── api/                # REST API endpoints
-│   ├── dashboard/          # Analytics dashboard page
-│   ├── history/            # Prediction history page
-│   ├── predict/            # Yield prediction form page
-│   ├── page.tsx            # Landing page
-│   ├── layout.tsx          # Root layout with navigation
-│   └── globals.css         # Theme CSS variables
-├── components/             # React components
-│   ├── maps/               # KenyaMap component
-│   ├── ui/                 # Reusable UI primitives
-│   ├── dashboard-charts.tsx
-│   ├── history-table.tsx
-│   ├── navigation.tsx
-│   ├── prediction-form.tsx
-│   └── prediction-result-card.tsx
-├── db/                     # Database schema and client
-│   ├── index.ts
-│   └── schema.ts
-├── lib/                    # Business logic
-│   ├── agronomy/           # Crop profiles, model, recommendations
-│   ├── kenya-county-regions.ts
-│   ├── utils.ts
-│   ├── validation.ts
-│   └── weather.ts
-└── public/data/            # Static Kenya GeoJSON
-    └── kenya-counties.geojson
+harvestmind/
+├── public/
+│   ├── data/
+│   │   └── kenya-counties.geojson   # Static Kenya county boundaries
+│   └── dashboard-preview.png        # README dashboard screenshot
+└── src/
+    ├── app/                         # Next.js App Router pages and API routes
+    │   ├── api/                     # REST API endpoints
+    │   ├── dashboard/               # Analytics dashboard page
+    │   ├── history/                 # Prediction history page
+    │   ├── predict/                 # Yield prediction form page
+    │   ├── page.tsx                 # Landing page
+    │   ├── layout.tsx               # Root layout with navigation
+    │   └── globals.css              # Theme CSS variables
+    ├── components/                  # React components
+    │   ├── maps/                    # KenyaMap component
+    │   ├── ui/                      # Reusable UI primitives
+    │   ├── dashboard-charts.tsx
+    │   ├── history-table.tsx
+    │   ├── navigation.tsx
+    │   ├── prediction-form.tsx
+    │   └── prediction-result-card.tsx
+    ├── db/                          # Database schema and client
+    │   ├── index.ts
+    │   └── schema.ts
+    └── lib/                         # Business logic
+        ├── agronomy/                # Crop profiles, model, recommendations
+        ├── kenya-county-regions.ts
+        ├── utils.ts
+        ├── validation.ts
+        └── weather.ts
 ```
 
 ---
@@ -129,8 +133,8 @@ src/
 ### 1. Clone and install
 
 ```bash
-git clone <repository-url>
-cd harvestmind
+git clone https://github.com/musanyaks/HarvestMind.git
+cd HarvestMind
 npm install
 ```
 
@@ -284,10 +288,10 @@ Aggregate analytics for the dashboard.
 
 The yield model lives in `src/lib/agronomy/model.ts`. It combines four sub-models:
 
-1. **Soil quality index** — evaluates pH, N, P, K, and moisture against crop-specific optimal ranges.
-2. **Climate index** — evaluates temperature, rainfall, and humidity, penalizing heat and drought stress.
-3. **Season factor** — crop-specific weight for Long Rains, Short Rains, Off-Season, or Perennial.
-4. **Irrigation factor** — adjustment based on irrigation method and rainfall adequacy.
+1. **Soil quality index**: evaluates pH, N, P, K, and moisture against crop-specific optimal ranges.
+2. **Climate index**: evaluates temperature, rainfall, and humidity, penalizing heat and drought stress.
+3. **Season factor**: crop-specific weight for Long Rains, Short Rains, Off-Season, or Perennial.
+4. **Irrigation factor**: adjustment based on irrigation method and rainfall adequacy.
 
 ```text
 predictedYield = baseYield × soilIndex × climateIndex × seasonFactor × irrigationFactor
@@ -385,6 +389,8 @@ npm run lint       # Run ESLint
 ---
 
 ## Deployment
+
+The app is deployed on Vercel at [harvestmind-five.vercel.app](https://harvestmind-five.vercel.app).
 
 ### Build the application
 
